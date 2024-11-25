@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAXCOIN - Noleggia e assegna computer</title>
+
+    <title>TAXCOIN</title>
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <link href="https://db.onlinewebfonts.com/c/9c6c9a4d9c067c4f56cc2d04e8a61dd9?family=Sugo+Pro+Display" rel="stylesheet">
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="font-sans">
     <nav class="navbar">
         <a href="#" class="logo">
             TAXCOIN
         </a>
         <div class="nav-links">
-            <a href="#">Cos'è Taxcoin</a>
-            <a href="#">Utenti</a>
-            <a href="#">Aziende</a>
-            <a href="#">Start Mining Taxcoin</a>
+            <a href="/about">Cos'è Taxcoin</a>
+            <a href="/users">Utenti</a>
+            <a href="/companies">Aziende</a>
+            <a href="/start-mining">Start Mining Taxcoin</a>
             <a href="#"> </a>
             <a href="#"> </a>
         </div>
         <div class="nav-buttons">
-            <a href="#" class="button button-secondary">Sei un azienda ? Contattaci</a>
-            <a href="#" class="button button-primary">Start Mining Taxcoin</a>
+            <a href="/contact" class="button button-secondary">Sei un azienda ? Contattaci</a>
+            <a href="/start-mining" class="button button-primary">Start Mining Taxcoin</a>
         </div>
     </nav>
 
@@ -34,36 +38,20 @@
             <p class="hero-description">
                 Tramite TAXCOIN. 
                 La criptovaluta che aumenta di valore grazie alle tasse che le aziende pagano.
-            </p>
-            <div class="button-group">
-                <a href="#" class="button button-primary">Start Mining Taxcoin</a>
-                <a href="#" class="button button-secondary">Sei un azienda ? Contattaci</a>
+                </p>
+
+                <a href="/start-mining" class="bg-black text-white text-lg px-8 py-4 rounded-md hover:bg-gray-800 transition-colors inline-block">
+                    Start Mining Taxcoin
+                </a>
             </div>
         </div>
-        <div class="hero-image-container" data-aos="fade-left" data-aos-delay="200">
-            <img src="/images/hand-cash.jpg" alt="Guadagna dalle tue tasse con TAXCOIN" class="hero-image">
-        </div>
     </section>
 
-    <section class="trust-section" data-aos="fade-up">
-        <h2 class="trust-title">Parlano di noi</h2>
-        <div class="logos">
-            <img src="/images/logos/la-stampa.png" alt="La Stampa">
-            <img src="/images/logos/repubblica.png" alt="La Repubblica">
-            <img src="/images/logos/wired.png" alt="Wired">
-            <img src="/images/logos/sole24.png" alt="Il Sole 24 Ore">
-            <img src="/images/logos/milano-finanza.png" alt="Milano Finanza">
+    <footer class="bg-gray-100 py-8">
+        <div class="container mx-auto px-4 text-center text-gray-600">
+            <p> 2024 TAXCOIN. Tutti i diritti riservati.</p>
         </div>
-    </section>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 50,
-            easing: 'ease-out'
-        });
-    </script>
+    </footer>
+     
 </body>
 </html>
