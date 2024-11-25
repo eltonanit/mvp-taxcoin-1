@@ -101,13 +101,16 @@ body {
 
 .hero-image-container {
     position: relative;
-    width: 48%;
+    width: 40%;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-image {
-    width: 100%;
-    border-radius: 8px;
+    width: 90%;
+    border-radius: 12px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     transform: perspective(1000px) rotateY(-12deg) rotateX(4deg);
     transition: transform 0.4s ease;
