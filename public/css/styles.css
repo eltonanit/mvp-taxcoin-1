@@ -31,13 +31,17 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 400;
     color: var(--dark);
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    font-family: 'Suga Display', cursive;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .nav-links {
