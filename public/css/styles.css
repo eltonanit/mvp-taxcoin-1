@@ -12,8 +12,21 @@
 }
 
 body {
-    background-color: var(--background-green);
     overflow-x: hidden;
+    background-color: #E8F5E9;
+}
+
+body.bg-white {
+    background-color: white;
+}
+
+.main-content {
+    min-height: calc(100vh - 80px);
+    padding-top: 2rem;
+}
+
+.main-content.bg-white {
+    background-color: white;
 }
 
 .navbar {
