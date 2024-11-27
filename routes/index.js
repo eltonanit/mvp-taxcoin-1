@@ -2,34 +2,64 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-// Home page
-router.get('/', (req, res) => {
+// Middleware per gestire gli errori 404
+const handle404 = (req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, '../public/404.html'));
+};
+
+// Middleware per verificare se il file esiste
+const checkFileExists = (filePath) => {
+    return (req, res, next) => {
+        try {
+            if (require('fs').existsSync(filePath)) {
+                next();
+            } else {
+                handle404(req, res, next);
+            }
+        } catch (err) {
+            next(err);
+        }
+    };
+};
+
+// Rotte principali
+// Home page - Landing page principale
+router.get('/', checkFileExists(path.join(__dirname, '../public/index.html')), (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-// Cos'è Taxcoin
-router.get('/about', (req, res) => {
+// About - Pagina informativa su Taxcoin
+router.get('/about', checkFileExists(path.join(__dirname, '../public/about.html')), (req, res) => {
     res.sendFile(path.join(__dirname, '../public/about.html'));
 });
 
-// Utenti
-router.get('/users', (req, res) => {
+// Users - Sezione dedicata agli utenti
+router.get('/users', checkFileExists(path.join(__dirname, '../public/users.html')), (req, res) => {
     res.sendFile(path.join(__dirname, '../public/users.html'));
 });
 
-// Aziende
-router.get('/companies', (req, res) => {
+// Companies - Sezione dedicata alle aziende
+router.get('/companies', checkFileExists(path.join(__dirname, '../public/companies.html')), (req, res) => {
     res.sendFile(path.join(__dirname, '../public/companies.html'));
 });
 
-// Start Mining Taxcoin
-router.get('/start-mining', (req, res) => {
+// Mining - Pagina per iniziare il mining di Taxcoin
+router.get('/start-mining', checkFileExists(path.join(__dirname, '../public/start-mining.html')), (req, res) => {
     res.sendFile(path.join(__dirname, '../public/start-mining.html'));
 });
 
-// Contact form for companies
-router.get('/contact', (req, res) => {
+// Contact - Form di contatto per le aziende
+router.get('/contact', checkFileExists(path.join(__dirname, '../public/contact.html')), (req, res) => {
     res.sendFile(path.join(__dirname, '../public/contact.html'));
+});
+
+// Gestione 404 per rotte non trovate
+router.use(handle404);
+
+// Gestione errori generici
+router.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Qualcosa è andato storto! Riprova più tardi.');
 });
 
 module.exports = router;
