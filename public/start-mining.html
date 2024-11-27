@@ -26,16 +26,15 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 1.5rem 2rem;
             display: flex;
-            justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #1a202c;
             text-decoration: none;
@@ -50,15 +49,24 @@
         }
 
         @media (min-width: 768px) {
+            .nav-container {
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                gap: 6rem;
+            }
+
             .nav-links {
                 display: flex;
                 gap: 2rem;
+                justify-content: flex-end;
+                padding-right: 2rem;
             }
 
             .nav-links a {
                 color: #4a5568;
                 text-decoration: none;
                 font-weight: 500;
+                font-size: 1.05rem;
             }
 
             .nav-links a:hover {
@@ -67,52 +75,35 @@
 
             .nav-buttons {
                 display: flex;
-                gap: 1rem;
+                gap: 1.5rem;
             }
         }
 
         .button {
             display: inline-block;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1.5rem;
             border-radius: 9999px;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.2s;
-            font-size: 0.875rem;
-            line-height: 1.25rem;
         }
 
         .button-primary {
             background-color: #22c55e;
             color: white !important;
-            border: 1px solid #22c55e;
         }
 
         .button-primary:hover {
             background-color: #16a34a;
-            border-color: #16a34a;
-        }
-
-        .button-black {
-            background-color: #000000;
-            color: white !important;
-            border: 1px solid #000000;
-        }
-
-        .button-black:hover {
-            background-color: #1a1a1a;
-            border-color: #1a1a1a;
         }
 
         .button-secondary {
-            background-color: white;
             border: 1px solid #e5e7eb;
             color: #374151 !important;
         }
 
         .button-secondary:hover {
             background-color: #f9fafb;
-            border-color: #d1d5db;
         }
 
         .main-content {
@@ -121,9 +112,9 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 3rem 2rem;
         }
 
         .footer-bg {
@@ -146,8 +137,12 @@
                 <a href="start-mining.html">Start Mining Taxcoin</a>           
             </div>
             <div class="nav-buttons">
-                <a href="contact.html" class="button button-secondary">Sei un azienda ? Contattaci</a>
-                <a href="start-mining.html" class="button button-black">Start Mining Taxcoin</a>
+                <a href="contact.html" class="bg-white text-black text-base px-8 py-3 rounded-md hover:bg-gray-200 transition-colors inline-block mr-4">
+                    Sei un azienda ? Contattaci
+                </a>
+                <a href="start-mining.html" class="bg-black text-white text-base px-8 py-3 rounded-md hover:bg-gray-800 transition-colors inline-block">
+                    Start Mining Taxcoin
+                </a>
             </div>
         </div>
     </nav>
