@@ -246,69 +246,68 @@
 
         .mobile-menu-button {
             display: none;
-            color: black;
+            background: none;
+            border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            border: none;
-            background: none;
             padding: 0.5rem;
+            margin-left: auto;
+            color: #0a0a0a;
             transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-button i {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu-button.active i {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-button.active i::before {
+            content: '\f00d';
+        }
+
+        .mobile-menu-button:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .nav-links, .nav-buttons {
+                display: none;
+            }
         }
 
         .mobile-menu {
             display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: absolute;
+            top: 100%;
+            left: 0;
             width: 100%;
-            max-width: 400px;
             background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.2s ease-out;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
         }
 
         .mobile-menu.show {
             display: block;
             opacity: 1;
-        }
-
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-
-        .mobile-menu-header .logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #1a202c;
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-
-        .mobile-menu-close {
-            width: 32px;
-            height: 32px;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: #0a0a0a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-        }
-
-        .mobile-menu-close:hover {
-            opacity: 0.7;
+            transform: translateY(0);
         }
 
         .mobile-menu .nav-links {
@@ -320,26 +319,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            padding: 1rem;
             color: #0a0a0a;
             text-decoration: none;
             border-bottom: 1px solid #f0f0f0;
             font-size: 1.125rem;
+            transition: background-color 0.2s ease;
         }
 
-        .mobile-menu .nav-links a:last-child {
-            border-bottom: none;
-        }
-
-        .mobile-menu .nav-links a span {
-            color: #666;
+        .mobile-menu .nav-links a:hover {
+            background-color: #f8f9fa;
         }
 
         .mobile-menu .nav-buttons {
-            margin-top: 2rem;
+            margin-top: 1rem;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
+            padding: 1rem;
         }
 
         .mobile-menu .nav-buttons a {
@@ -350,6 +347,7 @@
             font-weight: 500;
             text-align: center;
             text-decoration: none;
+            transition: all 0.2s ease;
         }
 
         .mobile-menu .nav-buttons a:first-child {
@@ -358,40 +356,21 @@
             background: white;
         }
 
+        .mobile-menu .nav-buttons a:first-child:hover {
+            background: #f8f9fa;
+        }
+
         .mobile-menu .nav-buttons a:last-child {
             background: #0a0a0a;
             color: white;
         }
 
+        .mobile-menu .nav-buttons a:last-child:hover {
+            background: #2d3748;
+        }
+
         .mobile-menu-overlay {
             display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.2s ease-out;
-        }
-
-        .mobile-menu-overlay.show {
-            display: block;
-            opacity: 1;
-        }
-
-        @media (max-width: 480px) {
-            .nav-links, .nav-buttons {
-                display: none;
-            }
-
-            .mobile-menu-button {
-                display: block;
-                z-index: 1000;
-                margin-left: auto;
-            }
         }
 
         .main-section {
@@ -867,141 +846,134 @@
             <button class="mobile-menu-button" onclick="toggleMenu()">
                 <i class="fa-solid fa-bars"></i>
             </button>
+            <!-- Mobile Menu -->
+            <div class="mobile-menu">
+                <nav class="nav-links">
+                    <a href="about.html">Cos'è Taxcoin <span>›</span></a>
+                    <a href="users.html">Utenti <span>›</span></a>
+                    <a href="companies.html">Aziende <span>›</span></a>
+                    <a href="start-mining.html">Start Mining <span>›</span></a>
+                </nav>
+                <div class="nav-buttons">
+                    <a href="contact.html">Sei un'azienda? Contattaci</a>
+                    <a href="start-mining.html">Start Mining Taxcoin</a>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" onclick="closeMenu()"></div>
+    <!-- MAIN CONTENT -->
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <div class="mobile-menu-header">
-            <a href="index.html" class="logo">TAXCOIN</a>
-            <button class="mobile-menu-close" onclick="closeMenu()">×</button>
-        </div>
-        <nav class="nav-links">
-            <a href="about.html">Cos'è Taxcoin <span>›</span></a>
-            <a href="users.html">Utenti <span>›</span></a>
-            <a href="companies.html">Aziende <span>›</span></a>
-            <a href="start-mining.html">Start Mining <span>›</span></a>
-        </nav>
-        <div class="nav-buttons">
-            <a href="contact.html">Sei un'azienda? Contattaci</a>
-            <a href="start-mining.html">Start Mining Taxcoin</a>
-        </div>
-    </div>
- <!-- MAIN CONTENT -->
-
- <div class="main-content" style="background-color: #F8FCF5;">
-    <div class="content-wrapper" style="background-color: #F8FCF5;">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col lg:flex-row justify-between items-start gap-16 mb-24">
-                <!-- Left Column -->
-                <div class="lg:w-1/2">
-                    <h1 class="text-5xl font-bold mb-8">
-                        Come si ottengono<br>
-                        <span class="text-black">i Taxcoin?</span>
-                    </h1>
-                    <div class="text-xl text-black-900 space-y-8">
-                        <div style="background-color: #F8FCF5;" class="border border-gray-100 p-6 rounded-lg shadow-sm">
-                            <strong class="block mb-4">Ogni giorno, solo 100,002 utenti in tutto il mondo, con il maggior numero di Taxblocks sul loro profilo, riceverà la criptovaluta TAXCOIN sul loro wallet.</strong>
-                            <p>La piattaforma distribuisce questi token ogni giorno fino a che tutti i Taxcoin non finiranno.</p>
-                        </div>
-                        
-                        <div style="background-color: #F8FCF5;" class="border border-gray-100 p-6 rounded-lg shadow-sm">
-                            <strong class="block mb-4">Numero totale di Taxcoin:</strong>
-                            <ul class="space-y-2">
-                                <li>• Sono programmati per essere limitati a 50 milioni</li>
-                                <li>• Questo limite sarà raggiunto nel 2125 quando l'ultimo fraziome verrà estratto</li>
-                                <li>• Dopo questo punto, non ne verranno creati altri</li>
-                            </ul>
-                        </div>
-                        
-                        <div style="background-color: #F8FCF5;" class="border border-gray-100 p-6 rounded-lg shadow-sm">
-                            <p class="mb-2">Ogni anno, 1000 wallet in meno avranno accesso ai Taxcoin.</p>
-                            <p><strong>Nel 2125 solo 2 wallet potranno ricevere gli ultimi Taxcoin.</strong></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column - Image -->
-                <div class="w-full lg:w-1/2 flex items-start justify-center pt-4">
-                    <img src="images/images-1/profilo.jpg" alt="Grafico Taxcoin" class="w-full h-auto max-w-3xl rounded-xl shadow-2xl">
-                </div>
-            </div>
-
-            <!-- Features Section -->
-            <div class="py-16 border-t border-gray-100">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Area Utenti TAXCOIN</h2>
-                    <p class="text-xl text-gray-500 max-w-3xl mx-auto">
-                        Scopri come puoi iniziare a guadagnare con TAXCOIN attraverso il mining e l'aumento di valore
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                    <!-- Mining Card -->
-                    <div style="background-color: #F8FCF5;" class="border border-gray-100 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-center">
-                            <div style="background-color: #F8FCF5;" class="w-16 h-16 border border-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i class="fa-solid fa-clock text-gray-600 text-2xl"></i>
+    <div class="main-content" style="background-color: #F8FCF5;">
+        <div class="content-wrapper" style="background-color: #F8FCF5;">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row justify-between items-start gap-16 mb-24">
+                    <!-- Left Column -->
+                    <div class="lg:w-1/2">
+                        <h1 class="text-5xl font-bold mb-8">
+                            Come si ottengono<br>
+                            <span class="text-black">i Taxcoin?</span>
+                        </h1>
+                        <div class="text-xl text-black-900 space-y-8">
+                            <div style="background-color: #F8FCF5;" class="border border-gray-100 p-6 rounded-lg shadow-sm">
+                                <strong class="block mb-4">Ogni giorno, solo 100,002 utenti in tutto il mondo, con il maggior numero di Taxblocks sul loro profilo, riceverà la criptovaluta TAXCOIN sul loro wallet.</strong>
+                                <p>La piattaforma distribuisce questi token ogni giorno fino a che tutti i Taxcoin non finiranno.</p>
                             </div>
-                            <h3 class="text-xl font-semibold mb-4">Inizia il Mining</h3>
-                            <p class="text-gray-600 mb-6">
-                                Avvia il processo di mining di TAXCOIN in pochi semplici passi
-                            </p>
-                            <a href="start-mining.html" class="text-black hover:text-gray-600 font-medium inline-flex items-center">
-                                Scopri come 
-                                <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </a>
+                            
+                            <div style="background-color: #F8FCF5;" class="border border-gray-100 p-6 rounded-lg shadow-sm">
+                                <strong class="block mb-4">Numero totale di Taxcoin:</strong>
+                                <ul class="space-y-2">
+                                    <li>• Sono programmati per essere limitati a 50 milioni</li>
+                                    <li>• Questo limite sarà raggiunto nel 2125 quando l'ultimo fraziome verrà estratto</li>
+                                    <li>• Dopo questo punto, non ne verranno creati altri</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background-color: #F8FCF5;" class="border border-gray-100 p-6 rounded-lg shadow-sm">
+                                <p class="mb-2">Ogni anno, 1000 wallet in meno avranno accesso ai Taxcoin.</p>
+                                <p><strong>Nel 2125 solo 2 wallet potranno ricevere gli ultimi Taxcoin.</strong></p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Wallet Card -->
-                    <div style="background-color: #F8FCF5;" class="border border-gray-100 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-center">
-                            <div style="background-color: #F8FCF5;" class="w-16 h-16 border border-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i class="fa-solid fa-wallet text-gray-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-4">Gestisci il Wallet</h3>
-                            <p class="text-gray-600 mb-6">
-                                Monitora i tuoi TAXCOIN e gestisci le tue transazioni
-                            </p>
-                            <a href="#" class="text-black hover:text-gray-600 font-medium inline-flex items-center">
-                                Accedi al wallet
-                                <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Growth Card -->
-                    <div style="background-color: #F8FCF5;" class="border border-gray-100 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
-                        <div class="text-center">
-                            <div style="background-color: #F8FCF5;" class="w-16 h-16 border border-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                <i class="fa-solid fa-chart-line text-gray-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-4">Monitora la Crescita</h3>
-                            <p class="text-gray-600 mb-6">
-                                Segui l'andamento del valore di TAXCOIN nel tempo
-                            </p>
-                            <a href="#" class="text-black hover:text-gray-600 font-medium inline-flex items-center">
-                                Vedi statistiche
-                                <i class="fa-solid fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
+                    <!-- Right Column - Image -->
+                    <div class="w-full lg:w-1/2 flex items-start justify-center pt-4">
+                        <img src="images/images-1/profilo.jpg" alt="Grafico Taxcoin" class="w-full h-auto max-w-3xl rounded-xl shadow-2xl">
                     </div>
                 </div>
 
-                <div class="text-center py-8">
-                    <a href="start-mining.html" class="inline-block bg-black text-white px-12 py-5 rounded-xl hover:bg-gray-800 transition-colors text-xl font-medium shadow-lg hover:shadow-xl">
-                        Inizia ora con TAXCOIN
-                    </a>
+                <!-- Features Section -->
+                <div class="py-16 border-t border-gray-100">
+                    <div class="text-center mb-16">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-4">Area Utenti TAXCOIN</h2>
+                        <p class="text-xl text-gray-500 max-w-3xl mx-auto">
+                            Scopri come puoi iniziare a guadagnare con TAXCOIN attraverso il mining e l'aumento di valore
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                        <!-- Mining Card -->
+                        <div style="background-color: #F8FCF5;" class="border border-gray-100 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+                            <div class="text-center">
+                                <div style="background-color: #F8FCF5;" class="w-16 h-16 border border-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <i class="fa-solid fa-clock text-gray-600 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-4">Inizia il Mining</h3>
+                                <p class="text-gray-600 mb-6">
+                                    Avvia il processo di mining di TAXCOIN in pochi semplici passi
+                                </p>
+                                <a href="start-mining.html" class="text-black hover:text-gray-600 font-medium inline-flex items-center">
+                                    Scopri come 
+                                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Wallet Card -->
+                        <div style="background-color: #F8FCF5;" class="border border-gray-100 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+                            <div class="text-center">
+                                <div style="background-color: #F8FCF5;" class="w-16 h-16 border border-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <i class="fa-solid fa-wallet text-gray-600 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-4">Gestisci il Wallet</h3>
+                                <p class="text-gray-600 mb-6">
+                                    Monitora i tuoi TAXCOIN e gestisci le tue transazioni
+                                </p>
+                                <a href="#" class="text-black hover:text-gray-600 font-medium inline-flex items-center">
+                                    Accedi al wallet
+                                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Growth Card -->
+                        <div style="background-color: #F8FCF5;" class="border border-gray-100 rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+                            <div class="text-center">
+                                <div style="background-color: #F8FCF5;" class="w-16 h-16 border border-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    <i class="fa-solid fa-chart-line text-gray-600 text-2xl"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold mb-4">Monitora la Crescita</h3>
+                                <p class="text-gray-600 mb-6">
+                                    Segui l'andamento del valore di TAXCOIN nel tempo
+                                </p>
+                                <a href="#" class="text-black hover:text-gray-600 font-medium inline-flex items-center">
+                                    Vedi statistiche
+                                    <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center py-8">
+                        <a href="start-mining.html" class="inline-block bg-black text-white px-12 py-5 rounded-xl hover:bg-gray-800 transition-colors text-xl font-medium shadow-lg hover:shadow-xl">
+                            Inizia ora con TAXCOIN
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- END MAIN CONTENT -->
+    <!-- END MAIN CONTENT -->
 
     <footer>
         <div class="container">
@@ -1064,26 +1036,30 @@
     <script>
         function toggleMenu() {
             const menu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.mobile-menu-overlay');
-            menu.classList.add('show');
-            overlay.classList.add('show');
-            document.body.style.overflow = 'hidden';
+            const button = document.querySelector('.mobile-menu-button');
+            menu.classList.toggle('show');
+            button.classList.toggle('active');
+            
+            // Change icon
+            const icon = button.querySelector('i');
+            if (button.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         }
 
         function closeMenu() {
             const menu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.mobile-menu-overlay');
+            const button = document.querySelector('.mobile-menu-button');
+            const icon = button.querySelector('i');
             
-            menu.style.opacity = '0';
-            overlay.style.opacity = '0';
-            
-            setTimeout(() => {
-                menu.classList.remove('show');
-                overlay.classList.remove('show');
-                menu.style.opacity = '';
-                overlay.style.opacity = '';
-                document.body.style.overflow = '';
-            }, 200);
+            menu.classList.remove('show');
+            button.classList.remove('active');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
         }
     </script>
 </body>
