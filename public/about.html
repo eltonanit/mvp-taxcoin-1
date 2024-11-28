@@ -3,222 +3,1033 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cos'è TAXCOIN</title>
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <link href="https://db.onlinewebfonts.com/c/9c6c9a4d9c067c4f56cc2d04e8a61dd9?family=Sugo+Pro+Display" rel="stylesheet">
-    <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <title>TAXCOIN</title>
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a202c;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-buttons {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .nav-container {
+                display: grid;
+                grid-template-columns: auto 1fr auto;
+                gap: 6rem;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 2rem;
+                justify-content: flex-end;
+                padding-right: 2rem;
+            }
+
+            .nav-links a {
+                color: #4a5568;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 1.05rem;
+            }
+
+            .nav-links a:hover {
+                color: #1a202c;
+            }
+
+            .nav-buttons {
+                display: flex;
+                gap: 0.1rem;
+            }
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .button-primary {
+            background-color: #22c55e;
+            color: white !important;
+        }
+
+        .button-primary:hover {
+            background-color: #16a34a;
+        }
+
+        .button-secondary {
+            border: 1px solid #e5e7eb;
+            color: #374151 !important;
+        }
+
+        .button-secondary:hover {
+            background-color: #f9fafb;
+        }
+
         .main-content {
-            margin-top: 120px;
-            padding-top: 2rem;
+            max-width: 100%;
+            margin: 0;
+            padding: 4rem 0;
+            text-align: left;
+            background-color: #B3E09C;
+            min-height: 100vh;
+            margin-top: 80px;
+            padding-bottom: 10rem;
+        }
+
+        .main-content .content-wrapper {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 0 1%;
+        }
+
+        .main-content h1 {
+            font-size: 3.8rem;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #000;
+        }
+
+        .main-content p {
+            font-size: 1.5rem;
+            color: #000;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            text-align: left;
+            max-width: 800px;
+        }
+
+        .main-content .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .main-content .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .main-content .btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.15rem;
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            text-decoration: none;
+            margin: 0;
+        }
+
+        .main-content img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            margin: 1rem auto;
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding: 2rem 0;
+                margin-top: 60px;
+                min-height: calc(100vh - 60px);
+            }
+
+            .main-content .content-wrapper {
+                padding: 0 0.5rem;
+            }
+
+            .main-content h1 {
+                font-size: 2.2rem !important;
+                margin-bottom: 1rem;
+                line-height: 1.3;
+            }
+
+            .main-content p {
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.5;
+            }
+
+            .main-content .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-content .btn {
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+
+            .main-content img {
+                max-width: 100%;
+                margin: 0.5rem auto;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        .footer-bg {
+            background-color: #0A0B0A;
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            color: black;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.2s ease-out;
+        }
+
+        .mobile-menu.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-menu-header .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1a202c;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .mobile-menu-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .mobile-menu-close:hover {
+            opacity: 0.7;
+        }
+
+        .mobile-menu .nav-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu .nav-links a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            color: #0a0a0a;
+            text-decoration: none;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1.125rem;
+        }
+
+        .mobile-menu .nav-links a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu .nav-links a span {
+            color: #666;
+        }
+
+        .mobile-menu .nav-buttons {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .mobile-menu .nav-buttons a {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .mobile-menu .nav-buttons a:first-child {
+            border: 1.5px solid #0a0a0a;
+            color: #0a0a0a;
+            background: white;
+        }
+
+        .mobile-menu .nav-buttons a:last-child {
+            background: #0a0a0a;
+            color: white;
+        }
+
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.2s ease-out;
+        }
+
+        .mobile-menu-overlay.show {
+            display: block;
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .nav-links, .nav-buttons {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+                z-index: 1000;
+                margin-left: auto;
+            }
+        }
+
+        .main-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #f7fafc;
+        }
+
+        .main-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .main-section p {
+            font-size: 1.25rem;
+            color: #4a5568;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .main-section .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 480px) {
+            .main-section {
+                padding: 2rem 1rem;
+            }
+
+            .main-section h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .main-section p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .main-section .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .main-section .cta-buttons a {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-card h3 {
+                font-size: 1.25rem;
+            }
+
+            .feature-card p {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            body {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+
+            main {
+                padding: 1rem;
+                margin: 0;
+                width: 100%;
+            }
+
+            footer {
+                padding: 2rem 0;
+                margin: 0;
+                width: 100%;
+                background: #0a0a0a;
+                color: white;
+            }
+
+            footer .container {
+                padding: 0 1rem;
+                margin: 0;
+                width: 100%;
+            }
+
+            footer .tagline {
+                font-size: 1.5rem;
+                line-height: 1.3;
+                margin-bottom: 2rem;
+                font-weight: 500;
+                color: white;
+                text-align: left;
+                padding: 0 0.5rem;
+            }
+
+            footer .social-links {
+                margin-bottom: 2rem;
+                text-align: left;
+                padding: 0 0.5rem;
+            }
+
+            footer .section {
+                margin-bottom: 2rem;
+                text-align: left;
+                padding: 0 0.5rem;
+            }
+
+            footer .section-title {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+                font-weight: 500;
+                color: white;
+            }
+
+            footer .section-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+                color: white;
+                text-decoration: none;
+                display: block;
+            }
+
+            footer .section-description {
+                font-size: 0.9rem;
+                line-height: 1.4;
+                color: #999;
+                margin-bottom: 1.5rem;
+            }
+
+            footer .footer-links {
+                margin-bottom: 1.5rem;
+            }
+
+            footer .footer-link {
+                color: white;
+                text-decoration: none;
+                display: block;
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            footer .legal-section {
+                padding-top: 1.5rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-top: 2rem;
+                text-align: left;
+            }
+
+            footer .company-info {
+                color: #999;
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+                line-height: 1.4;
+            }
+
+            footer .legal-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            footer .legal-link {
+                color: #999;
+                text-decoration: none;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Stili per il footer su schermi più grandi di 400px */
+        @media (min-width: 451px) {
+            footer {
+                padding: 4rem 0 2rem;
+                width: 100%;
+                background: #0a0a0a;
+                color: white;
+            }
+
+            footer .container {
+                max-width: 1400px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .footer-main {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+                margin-bottom: 4rem;
+                padding: 0;
+            }
+
+            .brand-section {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            footer .tagline {
+                font-size: 1.75rem;
+                line-height: 1.3;
+                font-weight: 500;
+                color: white;
+                margin-bottom: 0;
+            }
+
+            footer .social-links {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            footer .social-links a {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: white;
+                text-decoration: none;
+                font-size: 1rem;
+                transition: opacity 0.2s;
+            }
+
+            footer .social-links svg {
+                width: 16px;
+                height: 16px;
+                fill: white;
+            }
+
+            footer .social-links a:hover {
+                opacity: 0.8;
+            }
+
+            footer .social-links span {
+                font-size: 0.9rem;
+            }
+
+            footer .section-title {
+                font-size: 1.25rem;
+                margin-bottom: 1.5rem;
+                font-weight: 500;
+                color: white;
+            }
+
+            footer .section-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            footer .section-link {
+                color: white;
+                text-decoration: none;
+                font-size: 1rem;
+                transition: opacity 0.2s;
+            }
+
+            footer .section-link:hover {
+                opacity: 0.8;
+            }
+
+            footer .section-description {
+                color: #666;
+                font-size: 0.9rem;
+                margin-top: 0.5rem;
+                line-height: 1.5;
+            }
+
+            footer .footer-bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 2rem;
+                border-top: 1px solid #333;
+                font-size: 0.875rem;
+            }
+
+            footer .company-info {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+                color: #666;
+            }
+
+            footer .company-info a {
+                color: white;
+                text-decoration: none;
+            }
+
+            footer .legal-links {
+                display: flex;
+                gap: 1.5rem;
+            }
+
+            footer .legal-link {
+                color: white;
+                text-decoration: none;
+                transition: opacity 0.2s;
+            }
+
+            footer .legal-link:hover {
+                opacity: 0.8;
+            }
+
+            @media (max-width: 768px) {
+                .footer-main {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+
+        footer .brand-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 450px) {
+            footer .social-links svg {
+                width: 20px;
+                height: 20px;
+                fill: white;
+            }
+        }
+
+        @media (min-width: 451px) {
+            footer .social-links svg {
+                width: 10px;
+                height: 10px;
+                fill: white;
+            }
+        }
+
+        @media (min-width: 451px) {
+            .buttons-container {
+                display: flex;
+                gap: 1rem;
+                justify-content: flex-start;
+                align-items: center;
+                margin-top: 2rem;
+            }
+
+            .button {
+                margin: 0;
+            }
+        }
+
+        @media (min-width: 451px) {
+            .btn-container {
+                display: flex;
+                flex-direction: row !important;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn {
+                margin: 0 !important;
+                white-space: nowrap;
+                flex: 0 1 auto;
+                display: inline-flex !important;
+                padding: 6px 24px !important;
+                min-width: 180px;
+                justify-content: center;
+            }
+
+            .hero-content .btn-container {
+                display: flex;
+                flex-direction: row !important;
+            }
+
+            .hero-content .btn {
+                width: auto !important;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-container a {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                justify-content: center;
+                display: flex;
+            }
+        }
+
+        @media (min-width: 451px) {
+            .flex-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .hero-content {
+                flex: 1;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+
+            .hero-image {
+                flex: 1;
+                padding-left: 3rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+
+            .hero-image img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero-image {
+                margin: 2rem 2rem 0 -1.75rem;
+                width: calc(100% + 3rem);
+            }
+
+            .hero-image img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
         }
     </style>
 </head>
-
-<body class="font-sans">
+<body>
     <nav class="navbar">
-        <a href="index.html" class="logo">
-            TAXCOIN
-        </a>
-        <div class="nav-links">
-            <a href="about.html">Cos'è Taxcoin</a>
-            <a href="users.html">Utenti</a>
-            <a href="companies.html">Aziende</a>
-            <a href="start-mining.html">Start Mining Taxcoin</a>            
-        </div>
-        <div class="nav-buttons">
-            <a href="contact.html" class="button button-secondary">Sei un azienda ? Contattaci</a>
-            <a href="start-mining.html" class="button button-primary">Start Mining Taxcoin</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                TAXCOIN
+            </a>
+            <div class="nav-links">
+                <a href="about.html">Cos'è Taxcoin</a>
+                <a href="users.html">Utenti</a>
+                <a href="companies.html">Aziende</a>
+                <a href="start-mining.html">Start Mining</a>           
+            </div>
+            <div class="nav-buttons">
+                <a href="contact.html" class="bg-white text-black text-base px-8 py-3 rounded-md hover:bg-gray-200 transition-colors inline-block mr-2">
+                    Sei un azienda ? Contattaci
+                </a>
+                <a href="start-mining.html" class="bg-black text-white text-base px-8 py-3 rounded-md hover:bg-gray-800 transition-colors inline-block">
+                   <strong>Start Mining Taxcoin</strong> 
+                </a>
+            </div>
+            <button class="mobile-menu-button" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </nav>
-    
 
-    <div class="main-content">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Hero Section with Form -->
-            <div class="flex flex-col lg:flex-row justify-between items-center gap-12 mb-16">
-                <!-- Left Column -->
-                <div class="lg:w-1/2">
-                    <h1 class="text-5xl font-bold mb-4">
-                        Cos'è Taxcoin?</h1>
-                        <h2 class="text-2xl font-semibold mb-4">"Taxcoin: è una criptovaluta che cresce grazie alle tasse che le aziende pagano."</h2>
-                        <p class="text-xl text-black-900 mb-8">
-                        Taxcoin è una criptovaluta innovativa progettata per incentivare la conformità fiscale e trasformare il pagamento delle tasse in una prospettiva di guadagno.<br>
-                        Il suo valore si basa sull'interazione tra aziende che pagano le tasse e utenti che partecipano al sistema attraverso il <strong>Taxmining.</strong>
-                    </p>
-                     
-                </div>
-                <div class="w-full lg:w-1/2 px-4 flex items-center justify-center">
-                    <img src="images/images-1/hand-cash.jpg" alt="Grafico Taxcoin" class="max-w-full h-auto">
-                </div>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" onclick="closeMenu()"></div>
 
-               
-                 
-            </div>
-    <!-- Main Content -->
-     
-        <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto">             
-                
-                <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
-                    <h3 class="text-xl font-semibold mb-4 text-center">TAXMINIG</h3>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div class="bg-white rounded-xl shadow-sm p-8">
-                        <h3 class="text-xl font-semibold mb-4">Per gli Utenti</h3>
-                        <ul class="space-y-4 text-gray-600">
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Mining semplice e accessibile
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Crescita costante del valore
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-white rounded-xl shadow-sm p-8">
-                        <h3 class="text-xl font-semibold mb-4">Per le Aziende</h3>
-                        <ul class="space-y-4 text-gray-600">
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Gestione semplificata delle tasse
-                            </li>
-                            <li class="flex items-start">
-                                <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Partnership vantaggiose
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="text-center">
-                    <a href="/start-mining" class="inline-block bg-black text-white px-8 py-4 rounded-md hover:bg-gray-800 transition-colors">
-                        Inizia ora con TAXCOIN
-                    </a>
-                </div>
-            </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="index.html" class="logo">TAXCOIN</a>
+            <button class="mobile-menu-close" onclick="closeMenu()">×</button>
+        </div>
+        <nav class="nav-links">
+            <a href="about.html">Cos'è Taxcoin <span>›</span></a>
+            <a href="users.html">Utenti <span>›</span></a>
+            <a href="companies.html">Aziende <span>›</span></a>
+            <a href="start-mining.html">Start Mining <span>›</span></a>
+        </nav>
+        <div class="nav-buttons">
+            <a href="contact.html">Sei un'azienda? Contattaci</a>
+            <a href="start-mining.html">Start Mining Taxcoin</a>
         </div>
     </div>
-    
+ <!-- Main Content -->
+     
+ <div class="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">             
+        
+        <div class="bg-white rounded-xl shadow-sm p-8 mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-center">TAXMINIG</h3>
+        </div>
 
-    <footer class="footer-bg">
-        <div class="max-w-7xl mx-auto px-8 py-16">
-            <div class="grid grid-cols-4 gap-24">
-                <!-- Column 1 -->
-                <div>
-                    <div class="mb-8">
-                        <span class="text-white text-2xl font-bold">TAXCOIN</span>
-                    </div>
-                    <h2 class="text-white text-xl font-light mb-8">
-                        Finalmente puoi guadagnare<br/>
-                        dalle tasse che paghi
-                    </h2>
-                    <a href="#" class="text-white">
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-xl shadow-sm p-8">
+                <h3 class="text-xl font-semibold mb-4">Per gli Utenti</h3>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
-                    </a>
-                </div>
+                        Mining semplice e accessibile
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Crescita costante del valore
+                    </li>
+                </ul>
+            </div>
 
-                <!-- Column 2 -->
-                <div>
-                    <h3 class="text-white text-xl font-light mb-8">Unisciti a noi</h3>
-                    <div class="space-y-8">
-                        <div>
-                            <a href="#" class="text-white flex items-center hover:opacity-75">
-                                Diventa un Miner
-                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </a>
-                            <p class="text-gray-500 text-sm mt-2">Inizia a guadagnare con le tasse che paghi</p>
-                        </div>
-                        <div>
-                            <a href="#" class="text-white flex items-center hover:opacity-75">
-                                Sei un'azienda?
-                                <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                </svg>
-                            </a>
-                            <p class="text-gray-500 text-sm mt-2">Scopri come TAXCOIN può aiutare la tua azienda</p>
-                        </div>
+            <div class="bg-white rounded-xl shadow-sm p-8">
+                <h3 class="text-xl font-semibold mb-4">Per le Aziende</h3>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Gestione semplificata delle tasse
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-6 h-6 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Partnership vantaggiose
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="/start-mining" class="inline-block bg-black text-white px-8 py-4 rounded-md hover:bg-gray-800 transition-colors">
+                Inizia ora con TAXCOIN
+            </a>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- END MAIN CONTENT -->
+
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                <div class="brand-section">
+                    <h1 class="brand-name">TAXCOIN</h1>
+                    <p class="tagline">Guadagna dalle tasse, con TAXCOIN</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/company/taxcoin" target="_blank" rel="noopener noreferrer">
+                            <svg viewBox="0 0 10 10">
+                                <path d="M8.52 0H1.48C.663 0 0 .663 0 1.48v7.04C0 9.337.663 10 1.48 10h7.04C9.337 10 10 9.337 10 8.52V1.48C10 .663 9.337 0 8.52 0zM3.141 8.52H1.662V4.145h1.479V8.52zM2.402 3.534c-.399 0-.739-.34-.739-.739s.34-.739.739-.739.739.34.739.739-.34.739-.739.739zm5.723 4.986H6.646V6.034c0-1.655-1.973-1.53-1.973 0v2.486H3.194V4.145h1.479v.739c.58-1.077 3.459-1.155 3.459 1.031v2.605z"/>
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
                     </div>
                 </div>
-
-                <!-- Column 3 -->
-                <div>
-                    <h3 class="text-white text-xl font-light mb-8">Azienda</h3>
-                    <div class="space-y-4">
-                        <a href="#" class="text-white flex items-center hover:opacity-75">
-                            Chi siamo
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-white flex items-center hover:opacity-75">
-                            FAQ
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-white flex items-center hover:opacity-75">
-                            Contatti
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
+                <div class="section">
+                    <h3 class="section-title">Unisciti a noi</h3>
+                    <div class="section-links">
+                        <a href="start-mining.html" class="section-link">Inizia il Mining</a>
+                        <p class="section-description">Diventa un minatore di TAXCOIN e guadagna dalle tasse pagate dalle aziende</p>
+                        <a href="contact.html" class="section-link">Sei un'azienda?</a>
+                        <p class="section-description">Scopri come TAXCOIN può aiutarti a trasformare le tue tasse in opportunità</p>
                     </div>
                 </div>
-
-                <!-- Column 4 -->
-                <div>
-                    <h3 class="text-white text-xl font-light mb-8">Risorse</h3>
-                    <div class="space-y-4">
-                        <a href="#" class="text-white flex items-center hover:opacity-75">
-                            Blog
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="text-white flex items-center hover:opacity-75">
-                            Guide
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
+                <div class="section">
+                    <h3 class="section-title">Risorse</h3>
+                    <div class="section-links">
+                        <a href="#" class="section-link">Whitepaper</a>
+                        <a href="#" class="section-link">FAQ</a>
+                        <a href="#" class="section-link">Contatti</a>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3 class="section-title">Altro</h3>
+                    <div class="section-links">
+                        <a href="#" class="section-link">Termini e Condizioni</a>
+                        <a href="#" class="section-link">Privacy Policy</a>
                     </div>
                 </div>
             </div>
-
-            <!-- Bottom Bar -->
-            <div class="border-t border-gray-800 mt-16 pt-8">
-                <div class="flex justify-between items-center">
-                    <div class="text-gray-400 text-sm">
-                        TAXCOIN s.r.l. - P.IVA IT12681660960 - PEC: 
-                        <a href="mailto:taxcoin@legalmail.it" class="text-white hover:opacity-75">taxcoin@legalmail.it</a>
-                        <a href="#" class="ml-4 text-white hover:opacity-75">Credits</a>
-                    </div>
-                    <div class="flex space-x-8 text-sm">
-                        <a href="#" class="text-white hover:opacity-75">Privacy Policy</a>
-                        <a href="#" class="text-white hover:opacity-75">Termini e Condizioni</a>
-                    </div>
+            <div class="footer-bottom">
+                <div class="company-info">
+                    <p>&copy; 2024 TAXCOIN. Tutti i diritti riservati.</p>
+                    <a href="#" class="company-info-link">Contatti</a>
+                </div>
+                <div class="legal-links">
+                    <a href="#" class="legal-link">Termini e Condizioni</a>
+                    <a href="#" class="legal-link">Privacy Policy</a>
                 </div>
             </div>
         </div>
     </footer>
+     
+    <script>
+        if (typeof AOS !== 'undefined') {
+            AOS.init();
+        }
+    </script>
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            menu.classList.add('show');
+            overlay.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            
+            menu.style.opacity = '0';
+            overlay.style.opacity = '0';
+            
+            setTimeout(() => {
+                menu.classList.remove('show');
+                overlay.classList.remove('show');
+                menu.style.opacity = '';
+                overlay.style.opacity = '';
+                document.body.style.overflow = '';
+            }, 200);
+        }
+    </script>
 </body>
 </html>

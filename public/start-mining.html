@@ -180,21 +180,23 @@
             .mobile-menu {
                 display: none;
                 position: fixed;
-                top: 0;
-                right: -300px;
-                height: 100vh;
-                width: 300px;
-                background-color: white;
-                padding: 2rem 1.5rem;
-                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-                z-index: 999;
-                transition: right 0.3s ease;
-                overflow-y: auto;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%;
+                max-width: 400px;
+                background: white;
+                border-radius: 12px;
+                padding: 1.5rem;
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                opacity: 0;
+                transition: opacity 0.2s ease-out;
             }
 
             .mobile-menu.show {
-                right: 0;
                 display: block;
+                opacity: 1;
             }
 
             .mobile-menu-header {
@@ -202,30 +204,108 @@
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 2rem;
-                padding-bottom: 1rem;
-                border-bottom: 1px solid #eee;
+            }
+
+            .mobile-menu-header .logo {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: #1a202c;
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+
+            .mobile-menu-close {
+                width: 32px;
+                height: 32px;
+                border: none;
+                background: none;
+                cursor: pointer;
+                font-size: 24px;
+                color: #0a0a0a;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+            }
+
+            .mobile-menu-close:hover {
+                opacity: 0.7;
             }
 
             .mobile-menu .nav-links {
                 display: flex;
                 flex-direction: column;
-                gap: 1.5rem;
-                margin-bottom: 2rem;
-                text-align: center;
             }
 
             .mobile-menu .nav-links a {
-                font-size: 1.1rem;
-                padding: 0.5rem 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 0;
+                color: #0a0a0a;
+                text-decoration: none;
+                border-bottom: 1px solid #f0f0f0;
+                font-size: 1.125rem;
+            }
+
+            .mobile-menu .nav-links a:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-menu .nav-links a span {
+                color: #666;
             }
 
             .mobile-menu .nav-buttons {
+                margin-top: 2rem;
                 display: flex;
                 flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+                gap: 0.75rem;
             }
 
+            .mobile-menu .nav-buttons a {
+                width: 100%;
+                padding: 1rem;
+                border-radius: 6px;
+                font-size: 1rem;
+                font-weight: 500;
+                text-align: center;
+                text-decoration: none;
+            }
+
+            .mobile-menu .nav-buttons a:first-child {
+                border: 1.5px solid #0a0a0a;
+                color: #0a0a0a;
+                background: white;
+            }
+
+            .mobile-menu .nav-buttons a:last-child {
+                background: #0a0a0a;
+                color: white;
+            }
+
+            .mobile-menu-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(4px);
+                z-index: 999;
+                opacity: 0;
+                transition: opacity 0.2s ease-out;
+            }
+
+            .mobile-menu-overlay.show {
+                display: block;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
             .mining-steps {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -343,24 +423,18 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu">
         <div class="mobile-menu-header">
-            <span class="logo">TAXCOIN</span>
-            <button class="mobile-menu-close" onclick="closeMenu()">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+            <a href="index.html" class="logo">TAXCOIN</a>
+            <button class="mobile-menu-close" onclick="closeMenu()">×</button>
         </div>
-        <div class="nav-links">
-            <a href="about.html">Cos'è Taxcoin</a>
-            <a href="users.html">Utenti</a>
-            <a href="companies.html">Aziende</a>
-            <a href="start-mining.html">Start Mining Taxcoin</a>
-        </div>
+        <nav class="nav-links">
+            <a href="about.html">Cos'è Taxcoin <span>›</span></a>
+            <a href="users.html">Utenti <span>›</span></a>
+            <a href="companies.html">Aziende <span>›</span></a>
+            <a href="start-mining.html">Start Mining <span>›</span></a>
+        </nav>
         <div class="nav-buttons">
-            <a href="contact.html" class="bg-white text-black text-base px-8 py-3 rounded-md hover:bg-gray-200 transition-colors inline-block">
-                Sei un azienda ? Contattaci
-            </a>
-            <a href="start-mining.html" class="bg-black text-white text-base px-8 py-3 rounded-md hover:bg-gray-800 transition-colors inline-block">
-                Start Mining Taxcoin
-            </a>
+            <a href="contact.html">Sei un'azienda? Contattaci</a>
+            <a href="start-mining.html">Start Mining Taxcoin</a>
         </div>
     </div>
 
@@ -549,30 +623,27 @@
     </footer>
     <script>
         function toggleMenu() {
-            const mobileMenu = document.querySelector('.mobile-menu');
+            const menu = document.querySelector('.mobile-menu');
             const overlay = document.querySelector('.mobile-menu-overlay');
-            const menuButton = document.querySelector('.mobile-menu-button');
-            
-            mobileMenu.classList.add('show');
-            overlay.style.display = 'block';
-            setTimeout(() => overlay.classList.add('show'), 10);
-            menuButton.classList.add('active');
+            menu.classList.add('show');
+            overlay.classList.add('show');
             document.body.style.overflow = 'hidden';
         }
 
         function closeMenu() {
-            const mobileMenu = document.querySelector('.mobile-menu');
+            const menu = document.querySelector('.mobile-menu');
             const overlay = document.querySelector('.mobile-menu-overlay');
-            const menuButton = document.querySelector('.mobile-menu-button');
             
-            mobileMenu.classList.remove('show');
-            overlay.classList.remove('show');
-            menuButton.classList.remove('active');
-            document.body.style.overflow = '';
+            menu.style.opacity = '0';
+            overlay.style.opacity = '0';
             
             setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 300);
+                menu.classList.remove('show');
+                overlay.classList.remove('show');
+                menu.style.opacity = '';
+                overlay.style.opacity = '';
+                document.body.style.overflow = '';
+            }, 200);
         }
     </script>
 </body>
